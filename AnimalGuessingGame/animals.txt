@@ -1,0 +1,19 @@
+Is your animal a mammal?
+*,0,Does your animal live on a farm?
+0,0,Does your animal have a long tail?
+00,0,horse
+00,1,pig
+0,1,Does your animal have a long neck?
+01,0,giraffe
+01,1,Does your animal climb trees?
+011,0,monkey
+011,1,hedgehog
+*,1,Does your animal swim?
+1,0,Is your animal a bird?
+10,0,penguin
+10,1,Is your animal a reptile?
+101,0,turtle
+101,1,fish
+1,1,Does your animal have more than 4 legs?
+11,0,spider
+11,1,turkey
