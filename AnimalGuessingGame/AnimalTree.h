@@ -10,6 +10,7 @@ private:
 
 public:
 	AnimalTree();
+	~AnimalTree();
 
 	AnimalNode* getRoot() { return rootNode; }
 	AnimalNode* getCurr() { return currNode; }
@@ -19,6 +20,10 @@ public:
 	//pre: take in file name as parameter
 	//post: load binary tree of animals
 	bool load(string);
+
+	void saveToFile(string);
+
+	string traverse(AnimalNode*, string, string);
 
 	//pre: take in name of animal to add, question to differentiate from other option, and whether the animal should be under the y or n option
 	//post: create node between currNode and nextNode for question and create node after question for the animal
@@ -30,5 +35,7 @@ public:
 
 	// resets all pointers to rootNode
 	void reset();
+
+	void deleteNode(AnimalNode*);
 
 };

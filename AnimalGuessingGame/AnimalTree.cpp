@@ -9,13 +9,24 @@ AnimalTree::AnimalTree() {
 	nextNode = nullptr;
 }
 
+AnimalTree::~AnimalTree() {
+    deleteNode(rootNode);
+
+    delete currNode;
+    delete nextNode;
+    delete rootNode;
+    currNode = nullptr;
+    nextNode = nullptr;
+    rootNode = nullptr;
+}
+
 bool AnimalTree::load(string filename) {
     ifstream inFile(filename);
     if (inFile.fail()) {
         return false;
     }
 
-    string line, path, choice, QA;
+    string line, path, QA;
     getline(inFile, QA);
     rootNode = new AnimalNode(QA, nullptr, nullptr);
 
@@ -24,30 +35,60 @@ bool AnimalTree::load(string filename) {
         stringstream ss(line);
 
         getline(ss, path, ',');     // path before node
-        getline(ss, choice, ',');   // which option the node should appear under (y/n)
         getline(ss, QA, ',');       // question or animal
         for (char c : path) {       // iterate through path
-            if (c == '0')
-                currNode = currNode->getYesNode();
-            else if (c == '1')
-                currNode = currNode->getNoNode();
-            else if (c == '*')
-                currNode = rootNode;
+            if (c == '0') {
+                if (currNode->getYesNode() == nullptr) { // if this is as far as can be traveled, add another node
+                    currNode->setYesNode(new AnimalNode(QA, nullptr, nullptr));
+                    break;
+                }
+                else                                    // else, travel to the next node
+                    currNode = currNode->getYesNode();
+            }
+            else if (c == '1') {
+                if (currNode->getNoNode() == nullptr) {
+                    currNode->setNoNode(new AnimalNode(QA, nullptr, nullptr));
+                    break;
+                }
+                else
+                    currNode = currNode->getNoNode();
+            }
         }
-        if (choice == "0")
-            currNode->setYesNode(new AnimalNode(QA, nullptr, nullptr));
-        else if (choice == "1")
-            currNode->setNoNode(new AnimalNode(QA, nullptr, nullptr));
     }
     inFile.close();
     currNode = rootNode; // reset currNode to rootNode
     return true;
 }
 
+void AnimalTree::saveToFile(string filename) {
+    ofstream outFile(filename);
+    string path = "";
+    string content;
+
+    content = traverse(rootNode, content, path);
+
+    outFile << content;
+    outFile.close();
+}
+
+string AnimalTree::traverse(AnimalNode* a, string content, string path) {
+    if (path != "") content += path + ",";
+    content += a->getQA() + "\n"; // add current node's data
+
+    if (a->getYesNode() != nullptr)
+        content = traverse(a->getYesNode(), content, path + "0"); // redefine content to all the recursive data
+
+    if (a->getNoNode() != nullptr)
+        content = traverse(a->getNoNode(), content, path + "1");
+
+    return content; // return full data
+}
+
 void AnimalTree::addNode(string name, string question, char path) {
     AnimalNode* newA = new AnimalNode(name, nullptr, nullptr);
     AnimalNode* newQ = new AnimalNode(question, nullptr, nullptr);
-    newQ->setYesNode(path == 'y' ? newA : nextNode); // otherOption is the incorrectly guessed animal
+
+    newQ->setYesNode(path == 'y' ? newA : nextNode);
     newQ->setNoNode(path == 'y' ? nextNode : newA);
 
     if (currNode->getYesNode() == nextNode)
@@ -78,4 +119,15 @@ string AnimalTree::getNextQA() {
         return "Is your animal a(n) " + nextNode->getQA() + "?";
     else
         return nextNode->getQA();
+}
+
+void AnimalTree::deleteNode(AnimalNode* a) {
+    if (a->getYesNode() != nullptr)
+        deleteNode(a->getYesNode());
+
+    if (a->getNoNode() != nullptr)
+        deleteNode(a->getNoNode());
+
+    delete a;
+    a = nullptr;
 }

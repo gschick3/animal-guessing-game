@@ -14,12 +14,13 @@ int main()
         return 1;
     }
 
+
     char yn = 'y';
     while (yn == 'y') { // game loop
         tree.reset();
         bool nextIsAnimal = false;
 
-        while (true) { // round loop
+        while (true) { // round loopt
             cout << tree.getNextQA() << endl; // print either animal guess or next question
 
             if (nextIsAnimal) { // if the node is an animal guess
@@ -35,7 +36,7 @@ int main()
                     cin >> name;
                     getline(cin, question); // get whitespace
 
-                    cout << "What yes/no question would differentiate it from a(n) " << tree.getNextQA() << "?" << endl;
+                    cout << "What yes/no question would differentiate it from a(n) " << tree.getNext()->getQA() << "?" << endl;
                     getline(cin, question);
                     cout << "Would the answer be 'y' or 'n' for the new animal?" << endl;
                     cin >> path;
@@ -52,4 +53,8 @@ int main()
         cout << "Would you like to play again?" << endl;
         cin >> yn;
     }
+    cout << "Would you like to save the current tree?" << endl;
+    cin >> yn;
+    if (yn == 'y')
+        tree.saveToFile("output.txt");
 }

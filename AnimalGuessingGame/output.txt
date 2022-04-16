@@ -6,7 +6,9 @@ Is your animal a mammal?
 01,Does your animal have a long neck?
 010,giraffe
 011,Does your animal climb trees?
-0110,monkey
+0110,Can you find your animal at the zoo?
+01100,monkey
+01101,squirrel
 0111,hedgehog
 1,Does your animal swim?
 10,Is your animal a bird?
