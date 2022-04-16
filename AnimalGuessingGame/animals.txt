@@ -16,4 +16,8 @@ Is your animal a mammal?
 1011,fish
 11,Does your animal have more than 4 legs?
 110,spider
-111,turkey
+111,Is your animal extinct?
+1110,Was your animal the main antagonist in the first Jurassic Park?
+11100,tyrannosaurus rex
+11101,velociraptor
+1111,turkey
