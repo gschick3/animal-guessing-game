@@ -12,6 +12,7 @@ private:
 public:
     AnimalNode(string, AnimalNode*, AnimalNode*);
 
+    // Accessors and Modifiers
     AnimalNode* getYesNode() { return yes; }
     void setYesNode(AnimalNode* a) { yes = a; }
     AnimalNode* getNoNode() { return no; }

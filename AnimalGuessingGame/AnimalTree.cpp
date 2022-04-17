@@ -3,6 +3,10 @@
 #include <sstream>
 #include <iostream>
 
+
+/************************************************
+* Constructors and Destructors
+*************************************************/
 AnimalTree::AnimalTree() {
 	rootNode = nullptr;
 	currNode = nullptr;
@@ -20,6 +24,21 @@ AnimalTree::~AnimalTree() {
     rootNode = nullptr;
 }
 
+void AnimalTree::deleteNode(AnimalNode* a) {
+    if (a->getYesNode() != nullptr)
+        deleteNode(a->getYesNode());
+
+    if (a->getNoNode() != nullptr)
+        deleteNode(a->getNoNode());
+
+    delete a;
+    a = nullptr;
+}
+
+
+/************************************************
+* Load and Save to Files
+*************************************************/
 bool AnimalTree::load(string filename) {
     ifstream inFile(filename);
     if (inFile.fail()) {
@@ -84,6 +103,10 @@ string AnimalTree::traverse(AnimalNode* a, string content, string path) {
     return content; // return full data
 }
 
+
+/************************************************
+* Editing the tree
+*************************************************/
 void AnimalTree::addNode(string name, string question, char path) {
     AnimalNode* newA = new AnimalNode(name, nullptr, nullptr);
     AnimalNode* newQ = new AnimalNode(question, nullptr, nullptr);
@@ -114,20 +137,13 @@ void AnimalTree::reset() {
     nextNode = rootNode;
 }
 
+
+/************************************************
+* Accessors
+*************************************************/
 string AnimalTree::getNextQA() {
     if (nextNode->isAnimal())
         return "Is your animal a(n) " + nextNode->getQA() + "?";
     else
         return nextNode->getQA();
-}
-
-void AnimalTree::deleteNode(AnimalNode* a) {
-    if (a->getYesNode() != nullptr)
-        deleteNode(a->getYesNode());
-
-    if (a->getNoNode() != nullptr)
-        deleteNode(a->getNoNode());
-
-    delete a;
-    a = nullptr;
 }

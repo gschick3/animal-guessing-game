@@ -12,6 +12,10 @@ public:
 	AnimalTree();
 	~AnimalTree();
 
+	// Recursively delete all dynamically created nodes
+	void deleteNode(AnimalNode*);
+
+	// Accessors
 	AnimalNode* getRoot() { return rootNode; }
 	AnimalNode* getCurr() { return currNode; }
 	AnimalNode* getNext() { return nextNode; }
@@ -21,8 +25,12 @@ public:
 	//post: load binary tree of animals
 	bool load(string);
 
+	//pre: take in file name as parameter
+	//post: save current tree to file in readable form
 	void saveToFile(string);
 
+	//pre: take in root node, empy string, and empty path
+	//post: recursively fill up empty string with data
 	string traverse(AnimalNode*, string, string);
 
 	//pre: take in name of animal to add, question to differentiate from other option, and whether the animal should be under the y or n option
@@ -35,7 +43,4 @@ public:
 
 	// resets all pointers to rootNode
 	void reset();
-
-	void deleteNode(AnimalNode*);
-
 };

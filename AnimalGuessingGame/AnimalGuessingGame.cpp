@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 
 #include "AnimalTree.h"
 
@@ -44,7 +43,7 @@ int main()
                     cout << "What was your animal? (Enter only the name in lowercase)" << endl;
                     getline(cin, name);
 
-                    cout << "What yes/no question would differentiate it from a(n) " << tree.getNext()->getQA() << "? (Enter a question with question mark)" << endl;
+                    cout << "What yes/no question would differentiate it from a(n) " << tree.getNext()->getQA() << "? (Enter a question in sentence form)" << endl;
                     getline(cin, question);
                     cout << "Would the answer be 'y' or 'n' for the new animal?" << endl;
                     cin >> path;
