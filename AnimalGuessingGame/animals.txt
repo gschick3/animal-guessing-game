@@ -1,23 +1,67 @@
 Is your animal a mammal?
 0,Does your animal live on a farm?
 00,Does your animal have a long tail?
-000,horse
-001,pig
+000,Does your animal have hooves?
+0000,Does your animal have an udder?
+00000,cow
+00001,horse
+0001,dog
+001,Does your animal walk on two legs?
+0010,human
+0011,pig
 01,Does your animal have a long neck?
 010,giraffe
 011,Does your animal climb trees?
-0110,monkey
-0111,hedgehog
+0110,Can your animal glide?
+01100,flying squirrel
+01101,Does your animal have a tail?
+011010,Is your animal a type of cat?
+0110100,jaguar
+0110101,monkey
+011011,gorilla
+0111,Does your animal have quills?
+01110,hedgehog
+01111,Is your animal a pet?
+011110,Does your animal have claws?
+0111100,cat
+0111101,hamster
+011111,Does your animal have legs?
+0111110,Is your animal a marsupial?
+01111100,kangaroo
+01111101,Does your animal have stripes?
+011111010,zebra
+011111011,Does your animal live underground?
+0111110110,prairie dog
+0111110111,hippopotamus
+0111111,Does your animal have a dorsal fin?
+01111110,dolphin
+01111111,manatee
 1,Does your animal swim?
 10,Is your animal a bird?
-100,penguin
+100,Does your animal have a long neck?
+1000,Does your animal have long legs?
+10000,crane
+10001,swan
+1001,penguin
 101,Is your animal a reptile?
 1010,turtle
-1011,fish
+1011,Is your animal a fish?
+10110,shark
+10111,salamander
 11,Does your animal have more than 4 legs?
-110,spider
+110,Does your animal have a stinger?
+1100,bee
+1101,Does your animal have 8 legs?
+11010,spider
+11011,ladybug
 111,Is your animal extinct?
 1110,Was your animal the main antagonist in the first Jurassic Park?
 11100,tyrannosaurus rex
-11101,velociraptor
-1111,turkey
+11101,Is your animal a type of bird?
+111010,dodo
+111011,velociraptor
+1111,Is your animal a game animal?
+11110,turkey
+11111,Is your animal a predator?
+111110,owl
+111111,parakeet
